@@ -29,7 +29,7 @@ class User(db.Model):
 class Comment(db.Model):
     __table__name = 'comments'
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.String(20))
+    date = db.Column(db.DateTime(), default=datetime.utcnow)
     text = db.Column(db.String(500))
     is_approved = db.Column(db.Boolean(), default=False, nullable=False)
 
@@ -45,7 +45,7 @@ def index():
         'form':form
     }
     if form.validate_on_submit():
-        comment = Comment(date=datetime.utcnow, text=form.comment.data)
+        comment = Comment(text=form.comment.data)
         db.session.add(comment)
         db.session.commit()
         return redirect(url_for('index', **context))
