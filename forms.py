@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import BooleanField, StringField, SubmitField, validators
+from wtforms import StringField, SubmitField, validators
 
 
 class NewComment(FlaskForm):
@@ -8,4 +8,4 @@ class NewComment(FlaskForm):
         validators.Length(max=500),
         validators.InputRequired()
         ])
-    submit = SubmitField('Submit')
+    post = SubmitField('Post')
