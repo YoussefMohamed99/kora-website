@@ -4,5 +4,54 @@
     <div class="page-header">
         <h1>Welcome to the kora website</h1>
     </div>
+
     {{ wtf.quick_form(form) }}
+    <div>
+        <ul>
+            {% if database_today %}
+            <h2>Today</h2>
+            {% for data in database_today%}
+                <li>
+                {{ data.text }}
+                </li>
+            {% endfor %}
+            {% endif %}
+
+            {% if database_last_week %}
+            <h2>Last week</h2>
+            {% for data in database_last_week%}
+                <li>
+                    {{ data.text }}
+                </li>
+            {% endfor %}
+            {% endif %}
+
+            {% if database_last_month %}
+            <h2>Last month</h2>
+            {% for data in database_last_month%}
+                <li>
+                    {{ data.text }}
+                </li>
+            {% endfor %}
+            {% endif %}
+
+            {% if database_last_year %}
+            <h2>Last year</h2>
+            {% for data in database_last_year%}
+                <li>
+                {{ data.text }}
+                </li>
+            {% endfor %}
+            {% endif%}
+
+            {% if database_past %}
+           <h2>Past</h2>
+           {% for data in database_past%}
+               <li>
+                   {{ data.text }}
+               </li>
+           {% endfor %}
+            {% endif %}
+       </ul>
+       </div>
 {% endblock %}
